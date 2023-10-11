@@ -1,14 +1,13 @@
 //Exercicio 01 - A
 function contadorVogais(nome: string) {
-    var nome = nome.toLowerCase()
     const vogais: string[] = ['a', 'e', 'i', 'o', 'u']
-    var name: Array<string> = nome.split('')
-    var qnt = 0
+    const letras: Array<string> = nome.toLowerCase().split('')
+    let qnt = 0
     for (let vogal in vogais) {
 
-        for (let letra in name) {
+        for (let letra in letras) {
 
-            if (vogais[vogal] == name[letra]){
+            if (vogais[vogal] === letras[letra]){
                 
                 qnt++
                  
@@ -20,10 +19,11 @@ function contadorVogais(nome: string) {
     return qnt
 }
 
-/*var contagem = contadorVogais('Martins')
-console.log(contagem)*/
+//var contagem = contadorVogais('Adna Patricia')
+//console.log(contagem)
 
 //Exercicio 01 - B
+if (typeof window !== "undefined") {
 const entrada = document.getElementById("entrada") as HTMLInputElement
 const button = document.getElementById("button") as HTMLInputElement
 const res = document.getElementById("res") as HTMLInputElement
@@ -31,5 +31,7 @@ const res = document.getElementById("res") as HTMLInputElement
 button.addEventListener("click", () => {
     const nome = entrada.value
     const contador = contadorVogais(nome)
-    res.innerHTML = `A quantidade de vogais existentes no nome ${nome} é ${contador}.`
+    res.innerText = `A quantidade de vogais existentes no nome ${nome} é ${contador}.`
+    return res.innerText
 })
+}
