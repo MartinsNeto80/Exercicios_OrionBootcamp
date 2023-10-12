@@ -14,46 +14,154 @@ let lista: Array<biografia> = [
 //a) Crie uma função que retorne a bio do id passado
 
 function buscaBio(numeroID: number){
-    //console.log(lista[numeroID-1].bio);
-    return lista[numeroID-1].bio;
+    for(let i = 0; i < lista.length; i++){
+        if (lista[i].id === numeroID){
+            //console.log(lista[i].bio);
+            return lista[i].bio;
+        }
+    }
 }
-
-/*buscaBio(1)
-buscaBio(2)
-buscaBio(3)
-buscaBio(4)*/
-
-
-
+//buscaBio(4)
 
 //b) Crie uma função que retorne o name do id passado
 
 function buscaName(numeroID: number){
-    //console.log(lista[numeroID-1].name);
-    return lista[numeroID-1].name;
+    for(let i = 0; i < lista.length; i++){
+        if (lista[i].id == numeroID){
+            //console.log(lista[i].name);
+            return lista[i].name;
+        }
+    }
 }
 
-/*buscaName(1)
-buscaName(2)
-buscaName(3)
-buscaName(4)*/
+//buscaName(4)
+
 
 //c) Crie uma função que apague um item da lista a partir de um id passado
 
-function delItem(numeroID: number){
-    delete lista[numeroID-1];
-    //console.log(lista);
+function delObjeto(numeroID: number){
+    for(let i = 0; i < lista.length; i++){
+        if (lista[i].id == numeroID){
+            delete lista[i];
+            //console.log(lista);         
+        }
+    }
 }
 
-/*delItem(1)
-delItem(2)
-delItem(3)
-delItem(4)*/
+//delObjeto(2)
 
 
 //d) Crie uma função que altere a bio ou o name a partir de um id passado
 
+function alterarNomeBio(numeroID: number, mudar: string, textMudar: string){
+    for(let i = 0; i < lista.length; i++){
+        if (lista[i].id == numeroID){
+            if (mudar === "name"){
+                lista[i].name = textMudar;
+                //console.log(lista[i]);
+            } else if (mudar === "bio"){
+                lista[i].bio = textMudar;
+                //console.log(lista[i]);
+            }
+            ;         
+        }
+    }
+}
+
+//alterarNomeBio(1, "bio", "Martins é um participante do Orion Bootcamp")
 
 
 
 //e) Demonstre todas as funções com o paradigma funcional e com o imperativo
+
+/*================= IMPERATIVO =======================
+function buscaBio(numeroID: number){
+    for(let i = 0; i < lista.length; i++){
+        if (lista[i].id === numeroID){
+            //console.log(lista[i].bio);
+            return lista[i].bio;
+        }
+    }
+}
+================= FUNCIONAL =======================
+const buscaBio = (numeroID: number): any => {
+    for (let pos in lista){
+        if (lista[pos].id === numeroID){
+            return lista[pos].bio;
+        }
+    }
+
+}
+
+
+
+================= IMPERATIVO =======================
+function buscaName(numeroID: number){
+    for(let i = 0; i < lista.length; i++){
+        if (lista[i].id == numeroID){
+            //console.log(lista[i].name);
+            return lista[i].name;
+        }
+    }
+}
+================= FUNCIONAL =======================
+const buscaName = (numeroID: number): any => {
+    for (let pos in lista){
+        if (lista[pos].id === numeroID){
+            return lista[pos].name;
+        }
+    }
+
+}
+
+
+
+================= IMPERATIVO =======================
+function delObjeto(numeroID: number){
+    for(let i = 0; i < lista.length; i++){
+        if (lista[i].id == numeroID){
+            delete lista[i];
+            //console.log(lista);         
+        }
+    }
+}
+================= FUNCIONAL =======================
+const delObjeto = (numeroID: number): any => {
+    for (let pos in lista){
+        if (lista[pos].id === numeroID){
+            delete lista[i];
+        }
+    }
+
+}
+
+
+
+================= IMPERATIVO =======================
+function alterarNomeBio(numeroID: number, mudar: string, textMudar: string){
+    for(let i = 0; i < lista.length; i++){
+        if (lista[i].id == numeroID){
+            if (mudar === "name"){
+                lista[i].name = textMudar;
+                //console.log(lista[i]);
+            } else if (mudar === "bio"){
+                lista[i].bio = textMudar;
+                //console.log(lista[i]);
+            }
+            ;         
+        }
+    }
+}
+================= FUNCIONAL =======================
+const alterarNomeBio = (numeroID: number, mudar: string, textMudar: string): any => {
+    for (let pos in lista){
+        if (lista[pos].id === numeroID){
+            if (mudar === "name"){
+                lista[i].name = textMudar;
+            } else if (mudar === "bio"){
+                lista[i].bio = textMudar;
+            }
+            ;         
+        }
+    }
+}*/
