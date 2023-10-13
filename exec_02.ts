@@ -13,62 +13,55 @@ let lista: Array<biografia> = [
 
 //a) Crie uma função que retorne a bio do id passado
 
-function buscaBio(numeroID: number){
-    for(let i = 0; i < lista.length; i++){
-        if (lista[i].id === numeroID){
-            //console.log(lista[i].bio);
-            return lista[i].bio;
-        }
-    }
-}
+function buscaBio(numeroID: number): string{
+    const object = lista.find((object) => object.id === numeroID);
+    console.log(object?.bio);    
+    return object ? object.bio : "ID inexistente.";
+ }
+
 //buscaBio(4)
 
 //b) Crie uma função que retorne o name do id passado
 
-function buscaName(numeroID: number){
-    for(let i = 0; i < lista.length; i++){
-        if (lista[i].id == numeroID){
-            //console.log(lista[i].name);
-            return lista[i].name;
-        }
-    }
-}
-
+function buscaName(numeroID: number): string{
+    const object = lista.find((object) => object.id === numeroID);
+    //console.log(object?.name);    
+    return object ? object.name : "ID inexistente.";
+ }
 //buscaName(4)
 
 
 //c) Crie uma função que apague um item da lista a partir de um id passado
 
 function delObjeto(numeroID: number){
-    for(let i = 0; i < lista.length; i++){
-        if (lista[i].id == numeroID){
-            delete lista[i];
-            //console.log(lista);         
-        }
-    }
-}
-
+    const object = lista.findIndex((object) => object.id === numeroID);
+    return object ? lista.splice(object,1) : "ID inexistente.";
+   
+ }
 //delObjeto(2)
 
 
 //d) Crie uma função que altere a bio ou o name a partir de um id passado
 
-function alterarNomeBio(numeroID: number, mudar: string, textMudar: string){
-    for(let i = 0; i < lista.length; i++){
-        if (lista[i].id == numeroID){
-            if (mudar === "name"){
-                lista[i].name = textMudar;
-                //console.log(lista[i]);
-            } else if (mudar === "bio"){
-                lista[i].bio = textMudar;
-                //console.log(lista[i]);
+function alterarNomeBio(numeroID: number, mudar: "name" | "bio", textMudar: string){
+    const object = lista.find((object) => object.id === numeroID);
+        if (object) {
+            if (mudar === "name") {
+                object.name = textMudar;
+                //console.log(lista);            
+            } else if (mudar === "bio") {
+                object.bio = textMudar;
+                //console.log(lista);
+            } else {
+                //console.log("Escolha name para alterar o nome ou bio para alterar a bio.");
+                return "Escolha name para alterar o nome ou bio para alterar a bio."
             }
-            ;         
-        }
-    }
-}
-
-//alterarNomeBio(1, "bio", "Martins é um participante do Orion Bootcamp")
+        } else {
+            //console.log("ID inexistente.");
+            return "ID inexistente.";
+        }   
+ }
+//alterarNomeBio(4, "name", "Martins Neto")
 
 
 
@@ -84,55 +77,45 @@ function buscaBio(numeroID: number){
     }
 }
 ================= FUNCIONAL =======================
-const buscaBio = (numeroID: number): any => {
-    for (let pos in lista){
-        if (lista[pos].id === numeroID){
-            return lista[pos].bio;
-        }
-    }
-
-}
+function buscaBio(numeroID: number): string{
+    const object = lista.find((object) => object.id === numeroID);
+    //console.log(object?.bio);    
+    return object ? object.bio : "ID inexistente.";
+ }
 
 
 
 ================= IMPERATIVO =======================
 function buscaName(numeroID: number){
     for(let i = 0; i < lista.length; i++){
-        if (lista[i].id == numeroID){
+        if (lista[i].id === numeroID){
             //console.log(lista[i].name);
             return lista[i].name;
         }
     }
 }
 ================= FUNCIONAL =======================
-const buscaName = (numeroID: number): any => {
-    for (let pos in lista){
-        if (lista[pos].id === numeroID){
-            return lista[pos].name;
-        }
-    }
-
-}
+function buscaName(numeroID: number): string{
+    const object = lista.find((object) => object.id === numeroID);
+    //console.log(object?.name);    
+    return object ? object.name : "ID inexistente.";
+ }
 
 
 
 ================= IMPERATIVO =======================
 function delObjeto(numeroID: number){
     for(let i = 0; i < lista.length; i++){
-        if (lista[i].id == numeroID){
+        if (lista[i].id === numeroID){
             delete lista[i];
             //console.log(lista);         
         }
     }
 }
 ================= FUNCIONAL =======================
-const delObjeto = (numeroID: number): any => {
-    for (let pos in lista){
-        if (lista[pos].id === numeroID){
-            delete lista[i];
-        }
-    }
-
+function delObjeto(numeroID: number){
+    const object = lista.findIndex((object) => object.id === numeroID);
+    return object ? lista.splice(object,1) : "ID inexistente.";
 }
 
 
@@ -140,7 +123,7 @@ const delObjeto = (numeroID: number): any => {
 ================= IMPERATIVO =======================
 function alterarNomeBio(numeroID: number, mudar: string, textMudar: string){
     for(let i = 0; i < lista.length; i++){
-        if (lista[i].id == numeroID){
+        if (lista[i].id === numeroID){
             if (mudar === "name"){
                 lista[i].name = textMudar;
                 //console.log(lista[i]);
@@ -153,15 +136,21 @@ function alterarNomeBio(numeroID: number, mudar: string, textMudar: string){
     }
 }
 ================= FUNCIONAL =======================
-const alterarNomeBio = (numeroID: number, mudar: string, textMudar: string): any => {
-    for (let pos in lista){
-        if (lista[pos].id === numeroID){
-            if (mudar === "name"){
-                lista[i].name = textMudar;
-            } else if (mudar === "bio"){
-                lista[i].bio = textMudar;
+function alterarNomeBio(numeroID: number, mudar: "name" | "bio", textMudar: string){
+    const object = lista.find((object) => object.id === numeroID);
+        if (object) {
+            if (mudar === "name") {
+                object.name = textMudar;
+                //console.log(lista);            
+            } else if (mudar === "bio") {
+                object.bio = textMudar;
+                //console.log(lista);
+            } else {
+                //console.log("Escolha name para alterar o nome ou bio para alterar a bio.");
+                return "Escolha name para alterar o nome ou bio para alterar a bio."
             }
-            ;         
-        }
-    }
-}*/
+        } else {
+            //console.log("ID inexistente.");
+            return "ID inexistente.";
+        }   
+ }*/
