@@ -46,16 +46,7 @@ function delObjeto(numeroID: number){
 function alterarNomeBio(numeroID: number, mudar: "name" | "bio", textMudar: string){
     const object = lista.find((object) => object.id === numeroID);
         if (object) {
-            if (mudar === "name") {
-                object.name = textMudar;
-                //console.log(lista);            
-            } else if (mudar === "bio") {
-                object.bio = textMudar;
-                //console.log(lista);
-            } else {
-                //console.log("Escolha name para alterar o nome ou bio para alterar a bio.");
-                return "Escolha name para alterar o nome ou bio para alterar a bio."
-            }
+            object[mudar] = textMudar;
         } else {
             //console.log("ID inexistente.");
             return "ID inexistente.";
@@ -139,16 +130,7 @@ function alterarNomeBio(numeroID: number, mudar: string, textMudar: string){
 function alterarNomeBio(numeroID: number, mudar: "name" | "bio", textMudar: string){
     const object = lista.find((object) => object.id === numeroID);
         if (object) {
-            if (mudar === "name") {
-                object.name = textMudar;
-                //console.log(lista);            
-            } else if (mudar === "bio") {
-                object.bio = textMudar;
-                //console.log(lista);
-            } else {
-                //console.log("Escolha name para alterar o nome ou bio para alterar a bio.");
-                return "Escolha name para alterar o nome ou bio para alterar a bio."
-            }
+            object[mudar] = textMudar;
         } else {
             //console.log("ID inexistente.");
             return "ID inexistente.";
