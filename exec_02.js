@@ -88,15 +88,15 @@ if (typeof window !== "undefined") {
     var entradad1_1 = document.getElementById("entradad1");
     var entradad2_1 = document.getElementById("entradad2");
     var entradad3_1 = document.getElementById("entradad3");
-    var button = document.getElementById("buttond");
-    var res_1 = document.getElementById("resd");
-    button.addEventListener("click", function () {
+    var buttond = document.getElementById("buttond");
+    var resd_1 = document.getElementById("resd");
+    buttond.addEventListener("click", function () {
         var numeroID = Number(entradad1_1.value);
         var nomeBio = entradad2_1.value;
         var texto = entradad3_1.value;
         var contador = alterarNomeBio(numeroID, nomeBio, texto);
-        res_1.innerText = "".concat(JSON.stringify(contador));
-        return res_1.innerText;
+        resd_1.innerText = "".concat(JSON.stringify(contador));
+        return resd_1.innerText;
     });
 }
 /*//alterarNomeBio(4, "name", "Martins Neto")

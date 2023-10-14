@@ -108,16 +108,16 @@ function alterarNomeBio(numeroID: number, mudar: string, textMudar: string){
     const entradad1 = document.getElementById("entradad1") as HTMLInputElement;
     const entradad2 = document.getElementById("entradad2") as HTMLInputElement;
     const entradad3 = document.getElementById("entradad3") as HTMLInputElement;
-    const button = document.getElementById("buttond") as HTMLInputElement;
-    const res = document.getElementById("resd") as HTMLInputElement;
+    const buttond = document.getElementById("buttond") as HTMLInputElement;
+    const resd = document.getElementById("resd") as HTMLInputElement;
     
-    button.addEventListener("click", () => {
+    buttond.addEventListener("click", () => {
         const numeroID = Number(entradad1.value);
         const nomeBio = entradad2.value;
         const texto = entradad3.value;
         const contador = alterarNomeBio(numeroID, nomeBio, texto);
-        res.innerText = `${JSON.stringify(contador)}`;
-        return res.innerText;
+        resd.innerText = `${JSON.stringify(contador)}`;
+        return resd.innerText;
     });
     }
 /*//alterarNomeBio(4, "name", "Martins Neto")
