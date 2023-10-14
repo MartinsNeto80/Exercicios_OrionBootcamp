@@ -19,7 +19,24 @@ function buscaBio(numeroID: number): string{
     return object ? object.bio : "ID inexistente.";
  }
 
-//buscaBio(4)
+ if (typeof window !== "undefined") {
+    const entradaa = document.getElementById("entradaa") as HTMLInputElement;
+    const buttona = document.getElementById("buttona") as HTMLInputElement;
+    const resa = document.getElementById("resa") as HTMLInputElement;
+    
+    buttona.addEventListener("click", () => {
+        const numeroID = Number(entradaa.value);
+        const bio = buscaBio(numeroID);
+        if (bio === "ID inexistente."){
+            resa.innerText = `${bio}`;
+            return resa.innerText;
+        } else {
+            resa.innerText = `A bio do ID selecionado é "${bio}".`;
+            return resa.innerText;
+        }
+    });
+    }
+
 
 //b) Crie uma função que retorne o name do id passado
 
@@ -28,31 +45,82 @@ function buscaName(numeroID: number): string{
     //console.log(object?.name);    
     return object ? object.name : "ID inexistente.";
  }
-//buscaName(4)
+
+ if (typeof window !== "undefined") {
+    const entradab = document.getElementById("entradab") as HTMLInputElement;
+    const buttonb = document.getElementById("buttonb") as HTMLInputElement;
+    const resb = document.getElementById("resb") as HTMLInputElement;
+    
+    buttonb.addEventListener("click", () => {
+        const numeroID = Number(entradab.value);
+        const nome = buscaName(numeroID);
+        if (nome === "ID inexistente."){
+            resb.innerText = `${nome}`;
+            return resb.innerText;
+        } else {
+            resb.innerText = `A bio do ID selecionado é "${nome}".`;
+            return resb.innerText;
+        }
+    });
+    }
 
 
 //c) Crie uma função que apague um item da lista a partir de um id passado
 
 function delObjeto(numeroID: number){
-    const object = lista.findIndex((object) => object.id === numeroID);
-    return object ? lista.splice(object,1) : "ID inexistente.";
-   
- }
-//delObjeto(2)
+    const object = lista.filter((object) => object.id !== numeroID);
+    return object ? object : "ID inexistente.";
+ } 
 
+ if (typeof window !== "undefined") {
+    const entradac = document.getElementById("entradac") as HTMLInputElement;
+    const buttonc = document.getElementById("buttonc") as HTMLInputElement;
+    const resc = document.getElementById("resc") as HTMLInputElement;
+    
+    buttonc.addEventListener("click", () => {
+        const numeroID = Number(entradac.value);
+        const contador = delObjeto(numeroID);
+        resc.innerText = `O id: ${numeroID} foi deletado com sucesso. ${JSON.stringify(contador)}`;
+        return resc.innerText;
+    });
+    }
 
 //d) Crie uma função que altere a bio ou o name a partir de um id passado
 
-function alterarNomeBio(numeroID: number, mudar: "name" | "bio", textMudar: string){
+function alterarNomeBio(numeroID: number, mudar: string, textMudar: string){
     const object = lista.find((object) => object.id === numeroID);
         if (object) {
-            object[mudar] = textMudar;
+            if(mudar === "name"){
+                object.name = textMudar;
+                return object
+            }
+            if (mudar === "bio") {
+                object.bio = textMudar;
+                return object
+            }
         } else {
             //console.log("ID inexistente.");
             return "ID inexistente.";
         }   
  }
-//alterarNomeBio(4, "name", "Martins Neto")
+
+ if (typeof window !== "undefined") {
+    const entradad1 = document.getElementById("entradad1") as HTMLInputElement;
+    const entradad2 = document.getElementById("entradad2") as HTMLInputElement;
+    const entradad3 = document.getElementById("entradad3") as HTMLInputElement;
+    const button = document.getElementById("buttond") as HTMLInputElement;
+    const res = document.getElementById("resd") as HTMLInputElement;
+    
+    button.addEventListener("click", () => {
+        const numeroID = Number(entradad1.value);
+        const nomeBio = entradad2.value;
+        const texto = entradad3.value;
+        const contador = alterarNomeBio(numeroID, nomeBio, texto);
+        res.innerText = `${JSON.stringify(contador)}`;
+        return res.innerText;
+    });
+    }
+/*//alterarNomeBio(4, "name", "Martins Neto")
 
 
 
